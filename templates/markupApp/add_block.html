@@ -1,0 +1,32 @@
+{% extends 'markupApp/base.html' %}
+{% block body_block %}
+        {% if blocks %}
+            <table border = "1">
+                {% for block in blocks %}
+                <tr>
+                  <td>{{ block.slugId }}</td>
+                  <td>{{ block.data | linebreaks }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <strong>There are no text blocks present.</strong>
+        {% endif %}
+{% endblock %}
+{% block new_text %}
+        <form id="blockText_form" method="post" action="/markupApp/add_block/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="submit block">
+        </form>
+{% endblock %}

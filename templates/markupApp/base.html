@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>markupApp</title>
+        {% load staticfiles %}
+        {% load wysiwyg %}
+        {% wysiwyg_setup %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+
+    <body>
+
+      <!-- TODO: make this work for the textinput form
+      <textarea id="foo"></textarea>
+      {% wysiwyg_editor "foo" %}
+      -->
+      <!-- add block button at the top of the page -->
+      <hr />
+      <div>
+            <table border = "1" style="width:100%">
+              <tr>
+                <td><a href="/markupApp/add_block/">Add a code block</a></td>
+                <td><img src="{% static "markupApp/cwo_960_720.png" %}" alt="My image"/ style="float: right" width="100px" height="100px"></td>
+              </tr>
+            </table>
+      </div>
+      <hr />
+
+      <!-- split the page into left and right -->
+      <div style="width: 100%">
+          <!-- left sid of the page -->
+          <div style="float: left; width: 50%">
+              <div>{% block body_block %}{% endblock %}</div>
+              <div>{% block new_text %}{% endblock %}</div>
+          </div>
+          <div style="float: right">
+              <embed src="{% static "markupApp/Test_README.pdf" %}" alt="My output pdf"/ width="600px" height='800px'>
+          </div>
+      </div>
+    </body>
+</html>

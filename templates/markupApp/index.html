@@ -1,0 +1,47 @@
+{% extends 'markupApp/base.html' %}
+        {% load wysiwyg %}
+        {% wysiwyg_setup %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+{% block body_block %}
+        {% if blocks %}
+            <table border = "1">
+                {% for block in blocks %}
+                    {% if block.slugId == "latex-head" or block.slugId == "str-repl" %}
+                    <tr>
+                      <td>{{ block.slugId }}</td>
+                      <td>{{ block.data | linebreaks }}</td>
+                      <td>
+                          <a href="/markupApp">edit</a><br>
+                      </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+
+
+                <!-- here is the rest of the added code blocks -->
+                {% for block in blocks %}
+                    {% if block.slugId != "latex-head" and block.slugId != "str-repl" %}
+                    <tr>
+                      <td>{{ block.slugId }}</td>
+                      <td>{{ block.data | linebreaks }}</td>
+                      <td>
+                          <a href="/markupApp">edit</a><br>
+                          <a href="/markupApp">remove</a><br>
+                      </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+
+            </table>
+        {% else %}
+            <strong>There are no code blocks present.</strong>
+        {% endif %}
+{% endblock %}
+
+<!--
+{% block  output_text %}
+    {% if output %}
+        {{output}}
+        {% endif %}
+{% endblock %}
+-->
