@@ -27,15 +27,10 @@ class TextIn(models.Model):
             choices=lang_options,
             default=plain,
             )
+    selected = models.BooleanField(default=False);
 
     def is_lang(self):
         return self.lang
 
     def __unicode__(self):  #For Python 2, use __str__ on Python 3
         return self.slugId
-'''
-class TextOut(models.Model):
-
-    def __unicode__(self):  #For Python 2, use __str__ on Python 3
-        return self.name
-'''

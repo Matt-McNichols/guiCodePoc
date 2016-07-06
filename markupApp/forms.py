@@ -19,6 +19,7 @@ class TextInForm(forms.ModelForm):
     slugId = forms.SlugField()
     data = forms.CharField(widget=WYMEditor())
     lang = forms.ChoiceField(choices=lang_options)
+    selected = forms.BooleanField()
     class Meta:
         model=TextIn
-        fields=('slugId','data','lang')
+        fields=('slugId','data','lang','selected')

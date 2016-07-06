@@ -1,0 +1,74 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\graphicspath{ {images/}}
+\hypersetup{
+colorlinks=true,
+linktoc=all,
+linkcolor=blue!60,
+}
+\geometry{legalpaper, portrait, margin=0.5in}
+\lstdefinestyle{custom}{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true,
+  frame=single,
+  language=Python ,
+  keepspaces=true,
+  backgroundcolor=\color{gray!20},
+  keywordstyle=\bfseries\color{purple!70!black},
+  identifierstyle=\color{black},
+  stringstyle=\color{orange},
+  commentstyle=\color{green!40!black}
+}
+
+\lstset{style=custom}
+
+\title{Test Title}
+\author{Matt McNichols}
+\date{\today}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\href[page=50]{https://drive.google.com/open?id=0B47Em9Je9ElOdGZEaTc2VnlCYUE}{link to algorithms book}
+\begin{description}
+    \item[Master Method]\hfil
+    \begin{itemize}
+        \item chapter 4 in book
+        \item $f(n) = \Omega{n}$
+    \end{itemize}
+
+    \item[Analysis of Quicksort]\hfill
+    \begin{itemize}
+        \item worst case vs average case
+        \item chapter 7
+    \end{itemize}
+
+    \item[Partitioning Schemes]\hfill
+    \begin{itemize}
+        \item quick selection
+        \item median of median
+        \item chapter 9
+    \end{itemize}
+
+    \item[Data Structures]\hfill
+    \begin{itemize}
+        \item priority Queues
+        \item Heaps
+        \item Chapter 6
+    \end{itemize}
+\end{description}
+
+\end{document}

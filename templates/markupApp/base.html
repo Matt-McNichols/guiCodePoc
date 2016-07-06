@@ -19,7 +19,8 @@
       <div>
             <table border = "1" style="width:100%">
               <tr>
-                <td><a href="/markupApp/add_block/">Add a code block</a></td>
+                <td><a href="/markupApp/add_block/">Add</a><br>
+                <a href="/markupApp/">remove</a></td>
                 <td><img src="{% static "markupApp/cwo_960_720.png" %}" alt="My image"/ style="float: right" width="100px" height="100px"></td>
               </tr>
             </table>
@@ -34,7 +35,7 @@
               <div>{% block new_text %}{% endblock %}</div>
           </div>
           <div style="float: right">
-              <embed src="{% static "markupApp/Test_README.pdf" %}" alt="My output pdf"/ width="600px" height='800px'>
+              <embed src="{% static "markupApp/fOut.pdf" %}" alt="My output pdf"/ width="600px" height='800px'>
           </div>
       </div>
     </body>

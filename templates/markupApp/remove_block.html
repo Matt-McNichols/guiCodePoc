@@ -4,7 +4,6 @@
             <table border = "1">
                 {% for block in blocks %}
                 <tr>
-                  <td>{{ block.selected }}</td>
                   <td>{{ block.slugId }}</td>
                   <td>{{ block.data | linebreaks }}</td>
                 </tr>
@@ -14,9 +13,9 @@
             <strong>There are no text blocks present.</strong>
         {% endif %}
 {% endblock %}
-{% block new_text %}
-        <form id="blockText_form" method="post" action="/markupApp/add_block/">
 
+{% block remove_block %}
+        <form id="remove_form" method="post" action="/markupApp/remove_block/">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}

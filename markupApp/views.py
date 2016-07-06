@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from markupApp.models import TextIn
 from markupApp.forms import TextInForm
-
+import os
 # making a change to a file
 # write the latex file header
 header= '''
@@ -65,6 +65,7 @@ d_n --> description
 |{ --> \\item{
 '''
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Create your views here.
 def index(request):
  # Query the database for a list of ALL categories currently stored.
@@ -73,7 +74,24 @@ def index(request):
     # Place the list in our context_dict dictionary which will be passed to the template engine.
     TextBlocks = TextIn.objects.order_by('-id').reverse()
     block_dict = {'blocks': TextBlocks}
-    #block_dict['output']= output_text
+
+    # put blocks together into a file
+    fTexName = os.path.join(BASE_DIR,'static/markupApp/fOut.tex')
+    print 'tex file location: ',fTexName
+    fTex = open(fTexName,'w')
+    # loop through text blocks
+    for block in TextBlocks:
+        if block.slugId != 'str-repl':
+            print 'block: ',block, 'lang: ',block.is_lang();
+            fTex.write(block.data)
+    # file has now been writen
+    fTex.close();
+
+    # now compile tex file into pdf
+    os.chdir('static/markupApp/');
+    os.system('pdflatex fOut.tex')
+    os.chdir('../../');
+    os.system('pwd')
 
     # Render the response and send it back!
     return render(request, 'markupApp/index.html', block_dict)

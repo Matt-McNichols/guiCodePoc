@@ -2,17 +2,18 @@
         {% load wysiwyg %}
         {% wysiwyg_setup %}
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 {% block body_block %}
         {% if blocks %}
             <table border = "1">
                 {% for block in blocks %}
                     {% if block.slugId == "latex-head" or block.slugId == "str-repl" %}
                     <tr>
+                      <td>
+                          {{ block.selected }}
+                      </td>
                       <td>{{ block.slugId }}</td>
                       <td>{{ block.data | linebreaks }}</td>
-                      <td>
-                          <a href="/markupApp">edit</a><br>
-                      </td>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -22,12 +23,11 @@
                 {% for block in blocks %}
                     {% if block.slugId != "latex-head" and block.slugId != "str-repl" %}
                     <tr>
+                      <td>
+                          {{ block.selected }}
+                      </td>
                       <td>{{ block.slugId }}</td>
                       <td>{{ block.data | linebreaks }}</td>
-                      <td>
-                          <a href="/markupApp">edit</a><br>
-                          <a href="/markupApp">remove</a><br>
-                      </td>
                     </tr>
                     {% endif %}
                 {% endfor %}
